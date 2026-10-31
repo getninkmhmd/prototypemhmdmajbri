@@ -1,0 +1,58 @@
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:page-out .18s ease both}
+::view-transition-new(root){animation:page-in .42s cubic-bezier(.2,.75,.25,1) both}
+@keyframes page-in{from{opacity:.65;transform:translateY(7px) scale(.995);filter:blur(3px)}to{opacity:1;transform:none;filter:none}}
+@keyframes page-out{to{opacity:.7;filter:blur(2px)}}
+
+html{scroll-behavior:smooth}
+body{isolation:isolate;background:linear-gradient(145deg,#f7f9fb 0%,#f1f5f7 55%,#f8f6f0 100%)}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 80% 4%,#d7ad5418,transparent 35%),radial-gradient(ellipse at 15% 55%,#0c8b7a0b,transparent 40%)}
+.topbar{backdrop-filter:blur(16px);background:#ffffffed}
+.sidebar{background:linear-gradient(165deg,#071a33 0%,#0a2944 65%,#0b3d4b 140%)}
+.brand img{box-shadow:0 0 0 2px #d7ad5470,0 5px 16px #0003}
+.nav a{position:relative;overflow:hidden}
+.nav a:after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent,#ffffff10,transparent);transform:translateX(-120%);transition:transform .5s}
+.nav a:hover:after{transform:translateX(120%)}
+.page-title h1,.welcome h1{animation:headline-in .55s cubic-bezier(.2,.8,.2,1) both}
+.demo{box-shadow:inset 3px 0 #d7ad54}
+.matchhero{background:linear-gradient(115deg,#09243f,#0d5a62,#0d3349);background-size:170% 170%;animation:sea-shift 12s ease-in-out infinite}
+.matchhero:after{animation:ball-drift 7s ease-in-out infinite}
+.countbits span{box-shadow:0 5px 16px #071a3322;animation:count-pop .45s ease both}
+.countbits span:nth-child(2){animation-delay:.08s}.countbits span:nth-child(3){animation-delay:.16s}.countbits span:nth-child(4){animation-delay:.24s}
+.teamcard{overflow:hidden;position:relative}.teamcard:after{content:"";position:absolute;inset:0 100% 0 0;background:linear-gradient(110deg,#d7ad5414,transparent);transition:inset .35s}.teamcard:hover:after{inset:0}.teamcard h3{transition:color .2s}.teamcard:hover h3{color:var(--teal)}
+.primary{box-shadow:0 4px 12px #087c7022}.tab.active{box-shadow:0 3px 10px #087c7016}
+.live-clock{font-variant-numeric:tabular-nums;font-size:11px;color:var(--muted);min-width:42px;text-align:center}
+.row-actions{display:flex;align-items:center;gap:6px}.edit-btn{border:1px solid var(--line);background:#f5f8fa;border-radius:7px;padding:5px 8px;color:var(--teal);font-size:10px}.edit-btn:hover{background:#e8f4f0}
+.fixture{transition:background .2s,padding .2s,border-color .2s}.fixture:hover{padding-inline:8px;background:#f7faf9;border-color:#cbded8}.fixture[hidden]{display:none}
+.card,.stat,.teamcard{position:relative;overflow:hidden}
+.card:before,.stat:before,.teamcard:before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;border-radius:inherit;background:radial-gradient(300px circle at var(--pointer-x,50%) var(--pointer-y,50%),#d7ad5414,transparent 45%);opacity:0;transition:opacity .25s}
+.card:hover:before,.stat:hover:before,.teamcard:hover:before{opacity:1}
+.card>* ,.stat>* ,.teamcard>*{position:relative;z-index:1}
+.scroll-progress{position:fixed;inset:0 auto auto 0;width:100%;height:3px;z-index:30;transform:scaleX(0);transform-origin:left center;background:linear-gradient(90deg,#d7ad54,#f5d887,#0c907b);box-shadow:0 0 12px #d7ad5480;pointer-events:none}.rtl .scroll-progress{transform-origin:right center}
+#ambient-canvas{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.7}
+.ripple{position:absolute;width:8px;height:8px;border-radius:50%;pointer-events:none;background:#ffffff8c;transform:translate(-50%,-50%);animation:ripple-out .55s ease-out forwards}
+.primary,.iconbtn,.lang,.tab{position:relative;overflow:hidden}
+.matchhero .crest{box-shadow:0 5px 14px #03172740}.admin-grid .card{box-shadow:0 8px 28px #10243a0b}
+
+body[data-page="home"] .welcome{position:relative;isolation:isolate;min-height:228px;margin:0 0 22px;padding:35px 38px;border:1px solid #21485c;border-radius:20px;overflow:hidden;align-items:center;background:radial-gradient(ellipse at 82% 48%,#d7ad5422,transparent 26%),linear-gradient(112deg,#071a33 0%,#0c3449 58%,#0e5e61 125%);box-shadow:0 18px 48px #0a294426;color:white}
+.welcome:before{content:"";position:absolute;inset:-45%;z-index:-1;opacity:.36;background:repeating-linear-gradient(110deg,transparent 0 58px,#ffffff12 59px 60px,transparent 61px 112px);mask-image:linear-gradient(90deg,transparent,#000 60%,#000)}
+.welcome:after{content:"";position:absolute;z-index:-1;width:280px;height:280px;right:11%;top:50%;border:1px solid #e9ce8140;border-radius:50%;box-shadow:0 0 0 25px #ffffff08,0 0 0 55px #ffffff06,0 0 80px #d7ad5435;transform:translateY(-50%);animation:halo 8s ease-in-out infinite}
+.welcome>div:first-child{max-width:620px}.welcome .eyebrow{color:#e7c779}.welcome h1{font-size:clamp(29px,4vw,45px);line-height:1.08;max-width:570px;margin:13px 0 10px;color:white}.welcome p{font-size:14px;color:#c4d8de;max-width:450px;line-height:1.65}.welcome .season{align-self:flex-start;background:#ffffff12;color:#f2d995;border-color:#ffffff2c;backdrop-filter:blur(10px);letter-spacing:.08em}
+.matchhero{min-height:210px;display:flex;flex-direction:column;justify-content:space-between;padding:20px 22px}.matchhero:after{content:"⚽";right:8%;top:50%;transform:translateY(-50%);font-size:112px;color:#ffffff19;text-shadow:0 9px 30px #0004}.matchteams{position:relative;z-index:1;margin:14px 12px 18px}.matchtop,.matchfoot{position:relative;z-index:1}.versus{animation:versus-pulse 2.6s ease-in-out infinite}
+.theme-dark{--ink:#e8eef5;--muted:#a0afbd;--line:#344454;--paper:#0e1b29;--white:#162535;background:linear-gradient(145deg,#0b1724,#10202f 60%,#172633)}
+.theme-dark:before{background:radial-gradient(ellipse at 80% 4%,#d7ad5411,transparent 35%),radial-gradient(ellipse at 15% 55%,#0c8b7a14,transparent 40%)}
+.theme-dark .main,.theme-dark .content{color:var(--ink)}
+.theme-dark .topbar,.theme-dark .card,.theme-dark .stat,.theme-dark .teamcard,.theme-dark .lang,.theme-dark .iconbtn,.theme-dark .tab,.theme-dark .field input,.theme-dark .admin-form input,.theme-dark .admin-form select{background:#162535;color:var(--ink);border-color:#344454}
+.theme-dark .stat strong,.theme-dark .datebox b{color:#edf4fa}.theme-dark .countdown{background:linear-gradient(110deg,#162535,#183139)}.theme-dark .countbits span{background:#071a33}
+.theme-dark .fixture,.theme-dark .row,.theme-dark .saved-row{border-color:#2b3d4e}.theme-dark .datebox,.theme-dark .edit-btn{background:#203546;color:#d8e7ec}.theme-dark .notice{background:#17352f;color:#a6d9ca}
+.theme-dark .demo{background:#342d1d;color:#e7cf91;border-color:#5b4c2a}.theme-dark .teamcard p,.theme-dark .welcome p,.theme-dark .page-title p,.theme-dark .auth-card p{color:#a0afbd}.theme-dark .bottomnav{background:#122130;border-color:#344454}.theme-dark .bottomnav a{color:#b0bfcc}.theme-dark .form-error{color:#ff9999}
+.toast{backdrop-filter:blur(12px)}
+@keyframes headline-in{from{opacity:0;transform:translateY(10px);letter-spacing:-.01em}to{opacity:1;transform:translateY(0);letter-spacing:-.04em}}
+@keyframes sea-shift{0%,100%{background-position:0% 40%}50%{background-position:100% 60%}}
+@keyframes ball-drift{0%,100%{transform:translateY(-50%) rotate(-7deg)}50%{transform:translateY(calc(-50% - 9px)) rotate(8deg)}}
+@keyframes count-pop{from{opacity:0;transform:translateY(8px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes halo{0%,100%{transform:translateY(-50%) scale(.98);opacity:.7}50%{transform:translateY(-50%) scale(1.04);opacity:1}}
+@keyframes versus-pulse{0%,100%{text-shadow:0 0 0 #f3d99000;transform:scale(1)}50%{text-shadow:0 0 18px #f3d990a0;transform:scale(1.07)}}
+@keyframes ripple-out{to{width:260px;height:260px;opacity:0}}
+@media(max-width:700px){.live-clock{display:none}.row-actions{gap:3px}body[data-page="home"] .welcome{padding:25px 22px;min-height:225px;border-radius:15px}.welcome:after{right:-100px;width:230px;height:230px}.welcome h1{font-size:31px}.matchhero:after{right:-15px;font-size:88px}.fixture:hover{padding-inline:0}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}::view-transition-old(root),::view-transition-new(root){animation:none!important}.matchhero,.matchhero:after,.countbits span,.page-title h1,.welcome h1,.welcome:after,.versus{animation:none!important}.scroll-progress{box-shadow:none}}
